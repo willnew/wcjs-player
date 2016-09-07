@@ -324,30 +324,6 @@ wjs.prototype.addPlayer = function(wcpSettings) {
     });
 
     // surface click actions
-    wjs(newid).wrapper.find(".wcp-surface").click(function() {
-        wjsPlayer = getContext(this);
-        if (wjsPlayer.stateInt() == 6) {
-            wjsPlayer.find(".wcp-replay").trigger("click");
-            return;
-        }
-        if ([3,4].indexOf(wjsPlayer.stateInt()) > -1) {
-            if (vlcs[wjsPlayer.context].multiscreen && window.document.webkitFullscreenElement == null) {
-                wjsPlayer.fullscreen(true);
-                if (wjsPlayer.wrapper.css('cursor') == 'none') wjsPlayer.wrapper.css({cursor: 'default'});
-                if (wjsPlayer.mute()) wjsPlayer.mute(false);
-            } else wjsPlayer.togglePause().animatePause();
-        }
-        if ([5].indexOf(wjsPlayer.vlc.state) > -1 && !wjsPlayer.playing() && wjsPlayer.itemCount() > 0) wjsPlayer.play().animatePause();
-    });
-
-    wjs(newid).wrapper.find(".wcp-surface").dblclick(function() {
-        wjsPlayer = getContext(this);
-        if (opts[wjsPlayer.context].allowFullscreen) {
-            wjsPlayer.find(".wcp-anim-basic").finish();
-            wjsPlayer.find(".wcp-pause-anim").finish();
-            wjsPlayer.toggleFullscreen();
-        }
-    });
 
     wjs(newid).wrapper.parent().bind("mousemove",function(e) {
         wjsPlayer = getContext(this);
