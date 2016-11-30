@@ -71,6 +71,7 @@ window.addEventListener('beforeunload', function(e) {
 function wjs(context) {
 
     this.version = "v6.0.1";
+    this.destroyed = false;
 
     // Save the context
     this.context = (typeof context === "undefined") ? "#webchimera" : context;  // if no playerid set, default to "webchimera"
@@ -969,6 +970,8 @@ wjs.prototype.destroy = function() {
       }
     }
   }
+
+  this.destroyed = true;
 }
 
 
