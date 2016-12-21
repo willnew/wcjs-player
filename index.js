@@ -1408,7 +1408,6 @@ function isPlaying() {
 
 function hasEnded() {
     opts[this.context].keepHidden = true;
-    this.zoom(0);
     switchClass(this.find(".wcp-pause"),"wcp-pause","wcp-replay");
     if (this.time() > 0) {
         if (opts[this.context].lastPos < 0.95) {
